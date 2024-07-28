@@ -31,3 +31,30 @@ class Solution {
         return prev == null && slow == null;
     }
 }
+
+// class Solution {
+//     // Approach 4 :- Using recursion and Without changing the given List
+//     //               Also , not using any extra space other than stack space
+
+
+//     private ListNode curr;
+//     public boolean isPalindrome(ListNode head) {
+//         curr = head;
+        
+//         return recur(head);
+//     }
+
+//     public boolean recur (ListNode head) {
+
+//         if (head == null) return true;
+
+//         boolean ans = recur (head.next);
+//         if (head.val != curr.val) {
+//             return false;
+//         }
+
+//         curr = curr.next;
+
+//         return ans;
+//     }
+// }
