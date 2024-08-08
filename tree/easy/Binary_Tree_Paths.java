@@ -1,33 +1,30 @@
 class Solution {
+    // Using StringBuilder
+    
     List<String> res;
 
     public List<String> binaryTreePaths(TreeNode root) {
         res = new ArrayList<String>();
-
-        if (root == null) return res;
-        if (root.left == null && root.right == null) {
-            res.add(root.val + "");
-            return res;
-        }
-
-        binaryTreePathsHelper (root, "");
-
+        solve (root, new StringBuilder());
         return res;
     }
 
-    public void binaryTreePathsHelper (TreeNode root, String ans) {
-        if (root == null) return;
-
-        ans += root.val;
-
-        if (root.left == null && root.right == null) {
-            res.add (ans);
+    public void solve (TreeNode root, StringBuilder ans) {
+        if (root == null) {
             return;
         }
 
-        ans += "->";
+        int len = ans.length();
+        ans.append(root.val);
 
-        binaryTreePathsHelper (root.left, ans);
-        binaryTreePathsHelper (root.right, ans);
+        if (root.left == null && root.right == null) {
+            res.add(ans.toString());
+        } else {
+            ans.append("->");
+            solve (root.left, ans);
+            solve (root.right, ans);
+        }
+
+        ans.setLength(len);
     }
 }
