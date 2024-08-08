@@ -1,11 +1,8 @@
 class Solution {
     private int sum;
+    
     public int sumOfLeftLeaves(TreeNode root) {
         sum = 0;
-        if (root.left == null && root.right == null) {
-            return sum;
-        } 
-
         solve (root);
         return sum;
     }
